@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RazorPulse | AI Growth & Agentic Commerce Engine — Created by Dharun K (Razorpay Hackathon 2026)</title>
+  
+  <!-- Favicon / Meta -->
+  <meta name="description" content="RazorPulse: Autonomous Agent-to-Agent Commerce & Merchant AI Growth Engine powered by Razorpay. Built by Dharun K for Razorpay Hackathon 2026.">
+  <meta name="author" content="Dharun K">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            rzp: {
+              dark: '#050b14',
+              surface: '#081220',
+              card: '#0c1a2e',
+              border: '#1e3a5f',
+              blue: '#0284c7',
+              cyan: '#38bdf8',
+              emerald: '#10b981',
+              violet: '#8b5cf6'
+            }
+          },
+          fontFamily: {
+            display: ['Outfit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.25s ease-in-out forwards'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(6px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons & Chart.js & Canvas-Confetti -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-[#050b14] text-slate-100 min-h-screen flex flex-col font-sans selection:bg-sky-500 selection:text-white">
+
+  <!-- Top Announcement / Live Telemetry Ticker -->
+  <div class="ticker-wrap text-xs font-mono py-2 text-slate-400">
+    <div class="ticker-move flex items-center">
+      <span class="flex items-center gap-1.5 text-sky-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+        <strong>RAZORPAY HACKATHON 2026</strong>: Official Submission by <strong>Dharun K</strong>
+      </span>
+      <span class="text-slate-600">•</span>
+      <span class="text-slate-300">Track: <strong class="text-white">AI Growth and Agentic Commerce</strong></span>
+      <span class="text-slate-600">•</span>
+      <span class="text-slate-300">Active Mandates: <strong class="text-emerald-400 font-bold" id="tickerTxnCount">3,840</strong></span>
+      <span class="text-slate-600">•</span>
+      <span class="text-slate-300">Avg A2A Consensus: <strong class="text-cyan-400 font-bold" id="tickerLatency">41.8ms</strong></span>
+      <span class="text-slate-600">•</span>
+      <span class="text-slate-300">Autonomous GMV Settled: <strong class="text-emerald-400 font-bold" id="tickerVolume">₹84,20,650</strong></span>
+      <span class="text-slate-600">•</span>
+      <span class="text-slate-300">Merchant GMV Uplift: <strong class="text-amber-400 font-bold">+34.8%</strong></span>
+      <span class="text-slate-600">•</span>
+      <span class="text-slate-300">Zero-Click Protocol: <strong class="text-purple-400">AP2 v2.4 Active</strong></span>
+      <span class="text-slate-600">•</span>
+      <!-- Loop duplicate for smooth continuous marquee -->
+      <span class="flex items-center gap-1.5 text-sky-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+        <strong>RAZORPAY HACKATHON 2026</strong>: Project by <strong>Dharun K</strong>
+      </span>
+      <span class="text-slate-600">•</span>
+      <span class="text-slate-300">Track: <strong class="text-white">AI Growth and Agentic Commerce</strong></span>
+      <span class="text-slate-600">•</span>
+      <span class="text-slate-300">Mandates: <strong class="text-emerald-400 font-bold">3,840</strong></span>
+      <span class="text-slate-600">•</span>
+      <span class="text-slate-300">Latency: <strong class="text-cyan-400 font-bold">41.8ms</strong></span>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-[#081220]/80 backdrop-blur-md border-b border-sky-950/80 px-4 lg:px-8 py-3.5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <!-- Brand Logo & Creator -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20 border border-sky-400/40">
+          <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-extrabold text-xl tracking-tight text-white">
+              Razor<span class="text-gradient-cyan">Pulse</span>
+            </span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-sky-500/10 text-sky-400 border border-sky-500/30">
+              Agentic Commerce
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-400 flex items-center gap-1 font-medium">
+            <span>Created by</span>
+            <strong class="text-white font-semibold">Dharun K</strong>
+            <span class="text-slate-500">•</span>
+            <span class="text-emerald-400 font-mono text-[10px]">Razorpay Hackathon '26</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1 rounded-xl border border-slate-800">
+        <button 
+          data-tab="simulator" 
+          class="nav-tab-btn active px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 text-sky-400 bg-sky-950/40 border border-sky-500/30">
+          <i data-lucide="bot" class="w-4 h-4"></i>
+          A2A Simulator
+        </button>
+
+        <button 
+          data-tab="growth" 
+          class="nav-tab-btn px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 text-slate-400 border border-transparent hover:text-white">
+          <i data-lucide="trending-up" class="w-4 h-4"></i>
+          AI Growth Engine
+        </button>
+
+        <button 
+          data-tab="mandate" 
+          class="nav-tab-btn px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 text-slate-400 border border-transparent hover:text-white">
+          <i data-lucide="shield-check" class="w-4 h-4"></i>
+          Mandate Studio
+        </button>
+
+        <button 
+          data-tab="pitch" 
+          class="nav-tab-btn px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 text-slate-400 border border-transparent hover:text-white">
+          <i data-lucide="presentation" class="w-4 h-4"></i>
+          Pitch & Architecture
+        </button>
+      </nav>
+
+      <!-- Utility Actions (Top Right Corner) -->
+      <div class="flex items-center gap-2.5">
+        <button 
+          id="audioToggleBtn" 
+          title="Toggle Synthesizer Sound Effects"
+          class="p-2 rounded-lg bg-slate-900/70 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-all cursor-pointer">
+          <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
+        </button>
+
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/60 border border-slate-800 text-xs font-mono text-slate-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>AP2: Connected</span>
+        </div>
+
+        <!-- Chatbot Launcher with Specific Custom Icon in Top Right Corner -->
+        <button 
+          id="chatbotFab" 
+          class="chatbot-top-btn group" 
+          title="Open PulseAI Commerce Copilot"
+          aria-label="Open AI Copilot Chat">
+          <!-- Specific Custom AI Commerce Agent Icon -->
+          <div class="w-6 h-6 rounded-lg bg-slate-950/80 border border-sky-400/50 flex items-center justify-center relative flex-shrink-0 shadow-inner">
+            <svg class="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a2 2 0 0 1 2 2v1h1a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-1v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-1H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h1V4a2 2 0 0 1 2-2h2z"/>
+              <circle cx="9" cy="10" r="1.2" fill="#38bdf8"/>
+              <circle cx="15" cy="10" r="1.2" fill="#38bdf8"/>
+              <path d="M10 14h4"/>
+              <path d="M12 2v2"/>
+            </svg>
+            <span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping"></span>
+          </div>
+
+          <span class="hidden sm:inline font-display text-xs tracking-wide">PulseAI Copilot</span>
+          <span id="chatUnreadBadge" class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Sub-navigation -->
+    <div class="flex md:hidden items-center justify-around gap-1 mt-2.5 pt-2 border-t border-slate-800/60 text-[11px] font-medium">
+      <button data-tab="simulator" class="nav-tab-btn active px-2.5 py-1.5 rounded text-sky-400 font-semibold">Simulator</button>
+      <button data-tab="growth" class="nav-tab-btn px-2.5 py-1.5 rounded text-slate-400">Growth</button>
+      <button data-tab="mandate" class="nav-tab-btn px-2.5 py-1.5 rounded text-slate-400">Mandates</button>
+      <button data-tab="pitch" class="nav-tab-btn px-2.5 py-1.5 rounded text-slate-400">Pitch</button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="border-b border-slate-800/80 bg-gradient-to-b from-[#081220] to-[#050b14] py-8 px-4 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+      <div class="max-w-3xl space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-sky-500/20 to-blue-500/10 border border-sky-500/30 text-sky-300 text-xs font-mono">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span>Razorpay Hackathon 2026 Submission</span>
+          <span class="text-slate-500">•</span>
+          <span class="text-emerald-400 font-semibold">Track: AI Growth and Agentic Commerce</span>
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
+          The Autonomous <span class="text-gradient-cyan">Agentic Commerce</span> & Growth Engine
+        </h1>
+
+        <p class="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
+          Engineered by <strong class="text-white">Dharun K</strong>. RazorPulse bridges autonomous AI buyer agents with Razorpay’s payment gateway through cryptographic spending mandates (AP2), dynamic merchant margin negotiation, and zero-click automated settlements.
+        </p>
+
+        <!-- Quick Action Buttons -->
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <button 
+            data-quick-tab="simulator"
+            class="px-5 py-2.5 rounded-xl btn-rzp-primary font-semibold text-xs md:text-sm flex items-center gap-2 cursor-pointer">
+            <i data-lucide="play-circle" class="w-4 h-4"></i>
+            Launch A2A Live Simulator
+          </button>
+
+          <button 
+            data-quick-tab="growth"
+            class="px-5 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-xs md:text-sm flex items-center gap-2 cursor-pointer transition-all">
+            <i data-lucide="bar-chart-2" class="w-4 h-4 text-emerald-400"></i>
+            Explore AI Growth OS
+          </button>
+
+          <button 
+            data-quick-tab="pitch"
+            class="px-5 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-xs md:text-sm flex items-center gap-2 cursor-pointer transition-all">
+            <i data-lucide="file-text" class="w-4 h-4 text-purple-400"></i>
+            Hackathon Pitch & Arch
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Stats Card -->
+      <div class="w-full lg:w-80 glass-panel p-5 space-y-3 font-mono text-xs border-sky-500/20">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800 text-slate-400">
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="activity" class="w-3.5 h-3.5 text-sky-400"></i>
+            Autonomous Protocol Metrics
+          </span>
+          <span class="text-emerald-400">v2.4</span>
+        </div>
+
+        <div class="space-y-2 text-slate-300">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Autonomous Settlement:</span>
+            <span class="font-bold text-white">&lt; 45ms</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Merchant GMV Uplift:</span>
+            <span class="font-bold text-emerald-400">+34.8%</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Drop-off Salvage Rate:</span>
+            <span class="font-bold text-cyan-400">+41.2%</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Payment Engine:</span>
+            <span class="font-bold text-slate-200">Razorpay Subscriptions & PG</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Lead Architect:</span>
+            <span class="font-bold text-amber-300">Dharun K</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Areas (Tabbed) -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 lg:px-8 py-8">
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 1: A2A NEGOTIATION SIMULATOR                                     -->
+    <!-- ========================================================================= -->
+    <section id="section-simulator" class="app-section space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-sky-400 uppercase tracking-wider mb-1">
+            <i data-lucide="cpu" class="w-4 h-4"></i>
+            <span>Machine-to-Machine Autonomous Protocol</span>
+          </div>
+          <h2 class="text-2xl font-bold font-display text-white">
+            Agent-to-Agent (A2A) Negotiation & Checkout Terminal
+          </h2>
+          <p class="text-xs md:text-sm text-slate-400">
+            Witness an AI Buyer Agent autonomously negotiate pricing with the RazorPulse Merchant Agent, verify spending mandates, and execute zero-click settlement via Razorpay.
+          </p>
+        </div>
+
+        <div id="simStatusBadge" class="px-3 py-1 rounded-full text-xs font-mono bg-slate-800 text-slate-400 border border-slate-700 self-start md:self-auto">
+          Status: STANDBY
+        </div>
+      </div>
+
+      <!-- Scenario Selector Tabs -->
+      <div class="flex flex-wrap items-center gap-2 pt-1">
+        <span class="text-xs font-mono text-slate-400 mr-2">Select Scenario:</span>
+        <button data-scenario="gpu" class="scenario-btn px-3.5 py-2 rounded-xl text-xs font-semibold border border-sky-500 bg-sky-950/60 text-sky-300 transition-all flex items-center gap-2">
+          <i data-lucide="server" class="w-3.5 h-3.5"></i>
+          Enterprise GPU Cluster (B2B)
+        </button>
+        <button data-scenario="coffee" class="scenario-btn px-3.5 py-2 rounded-xl text-xs font-semibold border border-slate-800 bg-slate-900/40 text-slate-400 hover:text-white transition-all flex items-center gap-2">
+          <i data-lucide="coffee" class="w-3.5 h-3.5"></i>
+          Wholesale Arabica Beans (Commodity)
+        </button>
+        <button data-scenario="smarthome" class="scenario-btn px-3.5 py-2 rounded-xl text-xs font-semibold border border-slate-800 bg-slate-900/40 text-slate-400 hover:text-white transition-all flex items-center gap-2">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i>
+          Smart-Pantry Restock (Consumer)
+        </button>
+      </div>
+
+      <!-- Grid: Parameters Sidebar + Negotiation Terminal -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left: Contract & Guardrail Parameters -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="glass-panel p-5 space-y-4">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2.5">
+              <i data-lucide="sliders" class="w-4 h-4 text-sky-400"></i>
+              Contract Guardrails
+            </h3>
+
+            <div class="space-y-3 text-xs font-mono">
+              <div>
+                <span class="text-slate-500 text-[11px] block">Target Asset:</span>
+                <span class="font-semibold text-white text-sm" id="simItemName">Enterprise Cloud H100 GPU Cluster</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 py-2 border-y border-slate-800/80">
+                <div>
+                  <span class="text-slate-500 text-[10px] block">Standard List Price:</span>
+                  <span class="text-slate-300 font-bold" id="simBasePrice">₹1,85,000</span>
+                </div>
+                <div>
+                  <span class="text-slate-500 text-[10px] block">Buyer Target Anchor:</span>
+                  <span class="text-sky-400 font-bold" id="simTargetPrice">₹1,55,000</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <span class="text-slate-500 text-[10px] block">Merchant Floor Margin:</span>
+                  <span class="text-emerald-400 font-bold" id="simFloorPrice">₹1,62,000</span>
+                </div>
+                <div>
+                  <span class="text-slate-500 text-[10px] block">Delegated Mandate Cap:</span>
+                  <span class="text-purple-400 font-bold" id="simMandateCap">₹2,00,000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Protocol Security Rules -->
+            <div class="p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-[11px] space-y-1.5 text-slate-400">
+              <div class="text-slate-300 font-semibold flex items-center gap-1.5">
+                <i data-lucide="shield" class="w-3.5 h-3.5 text-emerald-400"></i>
+                Razorpay AP2 Guardrails:
+              </div>
+              <p>• Max concession per round: ≤8%</p>
+              <p>• Margin breach auto-abort triggered below floor</p>
+              <p>• Cryptographic mandate signature verified per turn</p>
+            </div>
+
+            <!-- Terminal Actions -->
+            <div class="pt-2 space-y-2">
+              <button 
+                id="runSimBtn" 
+                class="w-full py-3 rounded-xl btn-rzp-primary font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer shadow-lg">
+                <i data-lucide="play" class="w-4 h-4"></i>
+                Execute Autonomous Negotiation
+              </button>
+
+              <button 
+                id="resetSimBtn" 
+                class="w-full py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-slate-200 text-xs font-mono flex items-center justify-center gap-1.5 transition-all">
+                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                Reset Terminal
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Live Streaming Negotiation Terminal -->
+        <div class="lg:col-span-8 flex flex-col space-y-4">
+          <div class="terminal-window flex-grow flex flex-col min-h-[460px]">
+            <div class="terminal-header">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                <span class="text-xs font-mono text-slate-400 ml-2">RazorPulse AP2 Negotiation Console</span>
+              </div>
+              <div class="flex items-center gap-3 text-[11px] font-mono text-slate-400">
+                <span class="text-sky-400">TLS 1.3 / HMAC-SHA256</span>
+                <span class="text-emerald-400">Razorpay Enclave Active</span>
+              </div>
+            </div>
+
+            <div id="negotiationTerminal" class="terminal-body flex-grow">
+              <!-- Content rendered dynamically by agent-simulator.js -->
+            </div>
+          </div>
+
+          <!-- Checkout Action Card (Appears after agreement) -->
+          <div id="checkoutActionCard" class="hidden animate-fadeIn">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 2: AI GROWTH ENGINE & MERCHANT DASHBOARD                         -->
+    <!-- ========================================================================= -->
+    <section id="section-growth" class="app-section hidden space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-wider mb-1">
+            <i data-lucide="trending-up" class="w-4 h-4"></i>
+            <span>Autonomous Merchant Intelligence</span>
+          </div>
+          <h2 class="text-2xl font-bold font-display text-white">
+            AI Growth Engine & Dynamic Margin Optimizer
+          </h2>
+          <p class="text-xs md:text-sm text-slate-400">
+            Real-time analytics and autonomous growth loops. Adjust margin thresholds to observe instant GMV and net profit projection updates.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button 
+            id="simulateBurstBtn" 
+            class="px-4 py-2 rounded-xl btn-rzp-primary font-semibold text-xs flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+            Simulate 1,000 Agent Queries
+          </button>
+          <button 
+            id="triggerRestockBtn" 
+            class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-xs flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="refresh-cw" class="w-4 h-4 text-emerald-400"></i>
+            Trigger B2B Restock PO
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Stat Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-panel p-4 border-slate-800">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-1 font-mono">
+            <span>Projected Annual GMV</span>
+            <i data-lucide="dollar-sign" class="w-4 h-4 text-sky-400"></i>
+          </div>
+          <div class="text-2xl font-bold font-mono text-white" id="statProjectedGMV">₹16,85,00,000</div>
+          <div class="text-[11px] text-emerald-400 flex items-center gap-1 mt-1 font-mono">
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            <span id="statGmvLift">+34.8%</span> vs Static Flat Pricing
+          </div>
+        </div>
+
+        <div class="glass-panel p-4 border-slate-800">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-1 font-mono">
+            <span>Net Added Merchant Profit</span>
+            <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i>
+          </div>
+          <div class="text-2xl font-bold font-mono text-emerald-400" id="statAddedProfit">₹1,03,30,000</div>
+          <div class="text-[11px] text-slate-400 mt-1 font-mono">
+            Protected by Minimum Margin Floor
+          </div>
+        </div>
+
+        <div class="glass-panel p-4 border-slate-800">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-1 font-mono">
+            <span>Agent Checkout Conversion</span>
+            <i data-lucide="cpu" class="w-4 h-4 text-purple-400"></i>
+          </div>
+          <div class="text-2xl font-bold font-mono text-white">88.4%</div>
+          <div class="text-[11px] text-purple-400 mt-1 font-mono">
+            vs 2.8% Traditional Human Funnel
+          </div>
+        </div>
+
+        <div class="glass-panel p-4 border-slate-800">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-1 font-mono">
+            <span>Drop-off Salvage Lift</span>
+            <i data-lucide="life-buoy" class="w-4 h-4 text-amber-400"></i>
+          </div>
+          <div class="text-2xl font-bold font-mono text-amber-400">+41.2%</div>
+          <div class="text-[11px] text-slate-400 mt-1 font-mono">
+            Instant Counter-Offer Re-engagement
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls & Margin Sliders -->
+      <div class="glass-panel p-5 border-slate-800 space-y-4">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i data-lucide="sliders-horizontal" class="w-4 h-4 text-sky-400"></i>
+          Dynamic Margin Policy & Growth Controls
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+          <!-- Slider 1 -->
+          <div class="space-y-2">
+            <div class="flex justify-between font-mono">
+              <span class="text-slate-300">Minimum Gross Margin Floor:</span>
+              <span class="text-sky-400 font-bold" id="marginFloorVal">18%</span>
+            </div>
+            <input type="range" id="marginFloorSlider" min="10" max="35" value="18" class="w-full cursor-pointer">
+            <p class="text-[11px] text-slate-500">Autonomous agent will never concede prices below this margin limit.</p>
+          </div>
+
+          <!-- Slider 2 -->
+          <div class="space-y-2">
+            <div class="flex justify-between font-mono">
+              <span class="text-slate-300">Max Dynamic Discount Headroom:</span>
+              <span class="text-emerald-400 font-bold" id="discountVal">15%</span>
+            </div>
+            <input type="range" id="discountSlider" min="5" max="25" value="15" class="w-full cursor-pointer">
+            <p class="text-[11px] text-slate-500">Flexibility budget for A2A volume incentives and bulk closing.</p>
+          </div>
+
+          <!-- Salvage Strategy Mode -->
+          <div class="space-y-2">
+            <span class="text-slate-300 block font-mono">Cart Drop-off Salvage Mode:</span>
+            <div class="grid grid-cols-3 gap-2 pt-1 font-mono text-[11px]">
+              <button data-mode="conservative" class="salvage-mode-btn py-2 px-1 rounded-lg border border-slate-800 bg-slate-900/60 text-slate-400 text-center hover:text-white transition-all">
+                Conservative
+              </button>
+              <button data-mode="balanced" class="salvage-mode-btn py-2 px-1 rounded-lg border border-sky-400 bg-sky-500/20 text-sky-300 font-semibold text-center transition-all">
+                Balanced
+              </button>
+              <button data-mode="aggressive" class="salvage-mode-btn py-2 px-1 rounded-lg border border-slate-800 bg-slate-900/60 text-slate-400 text-center hover:text-white transition-all">
+                Aggressive
+              </button>
+            </div>
+            <p class="text-[11px] text-slate-500">Determines counter-offer trigger speed when a session stalls.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Main Line Chart: Dynamic vs Static Pricing -->
+        <div class="lg:col-span-8 glass-panel p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i data-lucide="line-chart" class="w-4 h-4 text-emerald-400"></i>
+              30-Day Revenue Trajectory: AI Dynamic Margin vs Static Pricing
+            </h3>
+            <span class="text-xs font-mono text-slate-400">Real-Time Simulation</span>
+          </div>
+          <div class="h-72 w-full">
+            <canvas id="chartMarginOptimization"></canvas>
+          </div>
+        </div>
+
+        <!-- Doughnut: Agent vs Human Traffic -->
+        <div class="lg:col-span-4 glass-panel p-5 space-y-3">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="pie-chart" class="w-4 h-4 text-sky-400"></i>
+            Traffic Mix & Processing Velocity
+          </h3>
+          <div class="h-72 w-full flex items-center justify-center">
+            <canvas id="chartTrafficDistribution"></canvas>
+          </div>
+        </div>
+
+        <!-- Bar: Drop-off Salvage -->
+        <div class="lg:col-span-12 glass-panel p-5 space-y-3">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="w-4 h-4 text-cyan-400"></i>
+            Friction Analysis & Autonomous Drop-off Salvage Rate (%)
+          </h3>
+          <div class="h-64 w-full">
+            <canvas id="chartSalvageRecovery"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 3: RAZORPAY MANDATE STUDIO                                        -->
+    <!-- ========================================================================= -->
+    <section id="section-mandate" class="app-section hidden space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-purple-400 uppercase tracking-wider mb-1">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>Cryptographic Delegated Authority</span>
+          </div>
+          <h2 class="text-2xl font-bold font-display text-white">
+            Razorpay Agent Mandate Studio
+          </h2>
+          <p class="text-xs md:text-sm text-slate-400">
+            Mint and manage verifiable spending credentials for autonomous agents. Enforce hard limits, category scopes, and biometric passkey step-up rules.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Mint Mandate Form -->
+        <div class="lg:col-span-5 glass-panel p-5 space-y-4">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-2.5">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-purple-400"></i>
+            Mint New Agent Spending Mandate
+          </h3>
+
+          <form id="createMandateForm" class="space-y-3.5 text-xs font-mono">
+            <div>
+              <label class="block text-slate-400 mb-1">Agent Name / Identifier:</label>
+              <input 
+                type="text" 
+                id="mandateAgentName" 
+                placeholder="e.g. Enterprise Office Procurement Bot" 
+                required 
+                class="w-full px-3 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-purple-400 transition-all">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1">Daily Cap (INR):</label>
+                <input 
+                  type="number" 
+                  id="mandateDailyLimit" 
+                  value="50000" 
+                  step="5000"
+                  class="w-full px-3 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-purple-400 transition-all">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1">Per-Txn Limit (INR):</label>
+                <input 
+                  type="number" 
+                  id="mandateTxnLimit" 
+                  value="25000" 
+                  step="2500"
+                  class="w-full px-3 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-purple-400 transition-all">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1">Category Whitelist:</label>
+              <select id="mandateCategory" class="w-full px-3 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-purple-400 transition-all">
+                <option value="Cloud Infrastructure & APIs">Cloud Infrastructure & APIs</option>
+                <option value="B2B Wholesale & Commodities">B2B Wholesale & Commodities</option>
+                <option value="Office Equipment & Electronics">Office Equipment & Electronics</option>
+                <option value="Consumer Groceries & Restock">Consumer Groceries & Restock</option>
+              </select>
+            </div>
+
+            <div class="p-3 rounded-lg bg-purple-950/20 border border-purple-500/20 text-[11px] text-slate-300">
+              <span class="text-purple-300 font-semibold block mb-0.5">Biometric Escalation Guardrail:</span>
+              If an autonomous transaction exceeds budget by >10%, RazorPulse sends a 1-tap Passkey push notification to user's registered device.
+            </div>
+
+            <button type="submit" class="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-purple-600/30 transition-all">
+              <i data-lucide="key" class="w-4 h-4"></i>
+              Mint Cryptographic Agent Token
+            </button>
+          </form>
+        </div>
+
+        <!-- Active Mandates List & Webhook Inspector -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i data-lucide="layers" class="w-4 h-4 text-emerald-400"></i>
+              Active Delegated Agent Mandates (AP2 Registered)
+            </h3>
+            <span class="text-xs font-mono text-slate-400">3 Mandates Active</span>
+          </div>
+
+          <div id="mandateListContainer" class="space-y-3">
+            <!-- Rendered by razorpay-protocol.js -->
+          </div>
+
+          <!-- Webhook Inspector -->
+          <div class="terminal-window mt-4">
+            <div class="terminal-header">
+              <span class="text-xs font-mono text-slate-300 flex items-center gap-2">
+                <i data-lucide="webhook" class="w-3.5 h-3.5 text-sky-400"></i>
+                Razorpay Webhook Event Dispatcher (<code class="text-emerald-400">payment.agentic.authorized</code>)
+              </span>
+              <button id="copyWebhookBtn" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-[11px] font-mono text-slate-300 transition-all">
+                Copy JSON
+              </button>
+            </div>
+            <pre id="webhookJsonPreview" class="p-4 text-xs font-mono text-sky-300 bg-slate-950 overflow-x-auto max-h-56">
+{
+  "entity": "event",
+  "account_id": "acc_RazorPulse_DharunK",
+  "event": "payment.agentic.authorized",
+  "payload": {
+    "payment": {
+      "id": "pay_AP2_2026_INITIAL",
+      "amount": 16650000,
+      "currency": "INR",
+      "status": "captured",
+      "method": "agentic_mandate",
+      "agent": {
+        "protocol": "AP2_v2.4",
+        "buyer_agent_id": "agt_procure_99x",
+        "mandate_id": "ap2_mnd_98f12a"
+      }
+    }
+  }
+}
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 4: PITCH DECK & TECHNICAL ARCHITECTURE                           -->
+    <!-- ========================================================================= -->
+    <section id="section-pitch" class="app-section hidden space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-amber-400 uppercase tracking-wider mb-1">
+            <i data-lucide="award" class="w-4 h-4"></i>
+            <span>Hackathon Presentation Mode</span>
+          </div>
+          <h2 class="text-2xl font-bold font-display text-white">
+            Razorpay Hackathon 2026: Official Pitch Deck
+          </h2>
+          <p class="text-xs md:text-sm text-slate-400">
+            Slide-by-slide technical and business breakdown for hackathon judges and evaluators.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="prevSlideBtn" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition-all">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            Previous
+          </button>
+          <button id="nextSlideBtn" class="px-3.5 py-2 rounded-xl btn-rzp-primary text-xs font-semibold flex items-center gap-1.5 shadow-lg">
+            Next Slide
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide Container -->
+      <div class="glass-panel p-6 md:p-8 min-h-[420px] border-sky-500/30" id="pitchSlideContainer">
+        <!-- Rendered by pitch-data.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- SIMULATED RAZORPAY CHECKOUT MODAL                                         -->
+  <!-- ========================================================================= -->
+  <div id="rzpCheckoutModal" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4 hidden">
+    <div class="rzp-modal-card w-full max-w-md rounded-2xl overflow-hidden animate-fadeIn">
+      
+      <!-- Modal Header (Razorpay Fintech Branding) -->
+      <div class="bg-gradient-to-r from-[#0c2340] to-[#072654] px-6 py-4 border-b border-sky-900/60 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-sky-500 flex items-center justify-center text-white font-bold text-base shadow">
+            R
+          </div>
+          <div>
+            <span class="font-display font-extrabold text-base tracking-tight text-white">
+              Razorpay <span class="text-sky-400 text-xs font-mono font-normal">Agent Gateway</span>
+            </span>
+            <span class="text-[10px] text-slate-400 block font-mono">AP2 Cryptographic Checkout</span>
+          </div>
+        </div>
+        <button id="closeModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg transition-all cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="p-6 space-y-4">
+        
+        <!-- Transaction Summary Box -->
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 font-mono text-xs space-y-2">
+          <div class="flex justify-between items-center pb-2 border-b border-slate-800/80">
+            <span class="text-slate-400">Target Item:</span>
+            <span class="font-semibold text-white truncate max-w-[200px]" id="rzpModalItem">GPU Cluster</span>
+          </div>
+
+          <div class="flex justify-between items-center">
+            <span class="text-slate-400">Authorized Debit:</span>
+            <span class="text-lg font-bold text-emerald-400" id="rzpModalAmount">₹1,66,500</span>
+          </div>
+
+          <div class="flex justify-between items-center text-[11px]">
+            <span class="text-slate-500">Buyer Agent:</span>
+            <span class="text-sky-300 truncate max-w-[200px]" id="rzpModalBuyerAgent">TensorFlow Bot</span>
+          </div>
+
+          <div class="flex justify-between items-center text-[11px]">
+            <span class="text-slate-500">Negotiated Savings:</span>
+            <span class="text-emerald-400 font-semibold" id="rzpModalSavings">₹18,500 saved</span>
+          </div>
+
+          <div class="flex justify-between items-center text-[11px]">
+            <span class="text-slate-500">Mandate Token:</span>
+            <code class="text-purple-300" id="rzpModalMandateToken">ap2_mnd_98f12a</code>
+          </div>
+        </div>
+
+        <!-- Settlement In Progress State -->
+        <div id="rzpSettlementProgress" class="space-y-3 py-2">
+          <div id="settleStep1" class="flex items-center gap-3 text-xs font-mono text-slate-500">
+            <i data-lucide="circle" class="w-4 h-4"></i> Step 1: Validate Mandate
+          </div>
+          <div id="settleStep2" class="flex items-center gap-3 text-xs font-mono text-slate-500">
+            <i data-lucide="circle" class="w-4 h-4"></i> Step 2: Razorpay Optimizer Route
+          </div>
+          <div id="settleStep3" class="flex items-center gap-3 text-xs font-mono text-slate-500">
+            <i data-lucide="circle" class="w-4 h-4"></i> Step 3: Zero-Click Tokenized Debit
+          </div>
+        </div>
+
+        <!-- Settlement Success State (Revealed after execution) -->
+        <div id="rzpSettlementSuccess" class="hidden text-center py-3 space-y-3 animate-fadeIn">
+          <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/20">
+            <i data-lucide="check" class="w-8 h-8"></i>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-white text-base">Payment Captured via AP2!</h4>
+            <p class="text-xs text-slate-300 mt-0.5">Machine-to-machine settlement finalized in 38ms.</p>
+          </div>
+
+          <div class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-left font-mono text-[11px] space-y-1 text-slate-400">
+            <div class="flex justify-between">
+              <span>Razorpay Order ID:</span>
+              <strong class="text-white" id="rzpReceiptTxnId">pay_AP2_8941</strong>
+            </div>
+            <div class="flex justify-between">
+              <span>Settlement Hash:</span>
+              <span class="text-sky-300 text-[10px]" id="rzpReceiptHash">0x98f...21</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Webhook Dispatched:</span>
+              <span class="text-emerald-400">HTTP 200 OK</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="pt-2 text-center">
+          <p class="text-[11px] text-slate-500 font-mono flex items-center justify-center gap-1">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i>
+            Secured by Razorpay Enclave & Deterministic Spending Bounds
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- AI COMMERCE COPILOT CHATBOT (FLOATING WIDGET)                             -->
+  <!-- ========================================================================= -->
+  <!-- AI COMMERCE COPILOT CHATBOT DRAWER (TOP-RIGHT ANCHORED)                   -->
+  <!-- ========================================================================= -->
+  <div id="chatbotContainer">
+    <!-- Chatbot Window / Drawer -->
+    <div id="chatbotWindow" class="chatbot-window hidden">
+      <!-- Chat Header -->
+      <div class="bg-gradient-to-r from-[#0c2340] to-[#0a1b33] px-4 py-3 border-b border-sky-900/60 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <!-- Specific Custom AI Agent Icon -->
+          <div class="w-8 h-8 rounded-lg bg-slate-950/80 border border-sky-400/50 flex items-center justify-center text-cyan-400 shadow-md">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a2 2 0 0 1 2 2v1h1a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-1v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-1H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h1V4a2 2 0 0 1 2-2h2z"/>
+              <circle cx="9" cy="10" r="1.2" fill="#38bdf8"/>
+              <circle cx="15" cy="10" r="1.2" fill="#38bdf8"/>
+              <path d="M10 14h4"/>
+              <path d="M12 2v2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-display font-bold text-sm text-white">PulseAI Copilot</span>
+              <span class="px-1.5 py-0.2 rounded text-[9px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">v2.6</span>
+            </div>
+            <p class="text-[10px] text-slate-400 font-mono">Autonomous Commerce Intelligence</p>
+          </div>
+        </div>
+
+        <button 
+          id="closeChatbotBtn" 
+          class="text-slate-400 hover:text-white p-1 rounded-lg transition-all cursor-pointer">
+          <i data-lucide="minus" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Quick Prompts Pill Bar -->
+      <div class="px-3 py-2 bg-slate-950/70 border-b border-slate-800/80 overflow-x-auto whitespace-nowrap flex gap-1.5 no-scrollbar" id="chatQuickPrompts">
+        <!-- Rendered by chatbot.js -->
+      </div>
+
+      <!-- Messages Stream -->
+      <div id="chatbotMessagesList" class="chatbot-messages font-sans">
+        <!-- Chat bubbles rendered dynamically -->
+      </div>
+
+      <!-- Input Form Bar -->
+      <form id="chatbotForm" class="p-3 bg-[#060e1a] border-t border-slate-800/90 flex items-center gap-2">
+        <input 
+          type="text" 
+          id="chatbotInput" 
+          placeholder="Ask about AP2, Dharun K, or negotiate..." 
+          autocomplete="off"
+          class="flex-grow px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-all font-sans">
+        
+        <button 
+          type="submit" 
+          class="p-2.5 rounded-xl btn-rzp-primary flex items-center justify-center text-white cursor-pointer shadow-md flex-shrink-0">
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed bottom-6 left-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-[#050b14] py-6 px-4 lg:px-8 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-300">RazorPulse OS</span>
+        <span>•</span>
+        <span>Razorpay Hackathon 2026 Project</span>
+        <span>•</span>
+        <span class="text-emerald-400">AI Growth and Agentic Commerce Track</span>
+      </div>
+
+      <div>
+        Created with ❤️ by <strong class="text-white font-semibold">Dharun K</strong>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/agent-simulator.js"></script>
+  <script src="js/growth-dashboard.js"></script>
+  <script src="js/razorpay-protocol.js"></script>
+  <script src="js/pitch-data.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>
