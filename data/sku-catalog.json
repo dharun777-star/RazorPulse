@@ -1,0 +1,23 @@
+[
+  {
+    "sku": "GPU-H100-NVL-4X",
+    "name": "NVIDIA H100 NVL 4x 80GB Cloud Cluster",
+    "base_price_inr": 185000,
+    "floor_margin_percent": 18,
+    "stock_units": 12
+  },
+  {
+    "sku": "COMM-ARABICA-SUN-250KG",
+    "name": "Coorg Single-Origin Specialty Arabica (250kg)",
+    "base_price_inr": 112500,
+    "floor_margin_percent": 21,
+    "stock_units": 45
+  },
+  {
+    "sku": "IOT-PANTRY-RESTOCK-BUNDLE",
+    "name": "Autonomous Household Essentials Bundle",
+    "base_price_inr": 4200,
+    "floor_margin_percent": 15,
+    "stock_units": 350
+  }
+]
