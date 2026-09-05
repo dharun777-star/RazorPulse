@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AP2_Message_Payload",
+  "type": "object",
+  "properties": {
+    "protocol_version": { "type": "string", "enum": ["2.4", "2.5"] },
+    "message_type": { "type": "string", "enum": ["INITIATE_RFQ", "COUNTER_OFFER", "DEAL_ACCEPTED", "ABORT"] },
+    "agent_id": { "type": "string" },
+    "mandate_token": { "type": "string", "pattern": "^ap2_mnd_[a-zA-Z0-9_]+$" },
+    "amount_inr": { "type": "number", "minimum": 1 },
+    "timestamp": { "type": "integer" }
+  },
+  "required": ["protocol_version", "message_type", "agent_id", "timestamp"]
+}
