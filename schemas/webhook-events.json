@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RazorPulse_Webhook_Events",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "enum": ["payment.agentic.authorized", "mandate.debited", "order.settled", "salvage.recovered"]
+    },
+    "payload": { "type": "object" }
+  },
+  "required": ["event", "payload"]
+}
