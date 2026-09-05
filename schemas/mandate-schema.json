@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Razorpay_Agent_Mandate",
+  "type": "object",
+  "properties": {
+    "mandate_id": { "type": "string" },
+    "agent_name": { "type": "string" },
+    "daily_cap_inr": { "type": "number", "minimum": 100 },
+    "per_txn_cap_inr": { "type": "number", "minimum": 50 },
+    "category_whitelist": { "type": "array", "items": { "type": "string" } },
+    "step_up_threshold_percent": { "type": "number", "default": 10 }
+  },
+  "required": ["mandate_id", "agent_name", "daily_cap_inr", "per_txn_cap_inr"]
+}
