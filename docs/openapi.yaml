@@ -1,0 +1,18 @@
+openapi: 3.1.0
+info:
+  title: RazorPulse Agentic Commerce API
+  version: 1.0.0
+  description: Machine-to-Machine Autonomous Payment & Negotiation Endpoints
+paths:
+  /api/v1/agent/rfq:
+    post:
+      summary: Submit Cryptographic RFQ
+      responses:
+        '200':
+          description: Dynamic Counter-Offer
+  /api/v1/mandates/mint:
+    post:
+      summary: Mint Delegated Spending Authority
+      responses:
+        '201':
+          description: Mandate Token Generated
