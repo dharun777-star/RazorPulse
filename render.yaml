@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: razorpulse-agentic-commerce
+    name: razorpulse
     runtime: static
     buildCommand: ""
     staticPublishPath: .

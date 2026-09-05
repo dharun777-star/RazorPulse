@@ -90,23 +90,23 @@ Simply double-click or open `index.html` in Chrome, Edge, or Firefox!
 
 RazorPulse includes a pre-configured **`render.yaml`** Blueprint for instant, zero-configuration deployment.
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/dharun777-star/razorpulse-agentic-commerce)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/dharun777-star/RazorPulse)
 
 ### Method 1: 1-Click Render Blueprint (Recommended)
 1. Push your repository to your GitHub account:
    ```powershell
-   git remote add origin https://github.com/dharun777-star/razorpulse-agentic-commerce.git
+   git remote add origin https://github.com/dharun777-star/RazorPulse.git
    git branch -M main
    git push -u origin main
    ```
 2. Click the **Deploy to Render** button above or open:  
-   👉 `https://render.com/deploy?repo=https://github.com/dharun777-star/razorpulse-agentic-commerce`
-3. Render will read `render.yaml`, configure the static site, and deploy your live URL (e.g. `https://razorpulse-agentic-commerce.onrender.com`) with automated SSL.
+   👉 `https://render.com/deploy?repo=https://github.com/dharun777-star/RazorPulse`
+3. Render will read `render.yaml`, configure the static site, and deploy your live URL (e.g. `https://razorpulse.onrender.com`) with automated SSL.
 
 ### Method 2: Render Dashboard (Manual)
 1. Go to **[dashboard.render.com](https://dashboard.render.com)** and sign in with GitHub.
 2. Click **New +** → select **Static Site**.
-3. Choose your repository: `razorpulse-agentic-commerce`.
+3. Choose your repository: `RazorPulse`.
 4. Leave **Build Command** blank and set **Publish Directory** to `.`.
 5. Click **Create Static Site**. Your site will be live in 30 seconds!
 
