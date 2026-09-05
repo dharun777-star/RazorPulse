@@ -1,0 +1,8 @@
+{
+  "spot_rates": {
+    "cloud_compute_gpu_hour": 312.50,
+    "specialty_coffee_per_kg": 450.00,
+    "high_speed_transit_sla_multiplier": 1.12
+  },
+  "last_updated": 1772791200
+}
