@@ -1,0 +1,11 @@
+{
+  "name": "razorpulse-agentic-commerce",
+  "version": "1.0.0",
+  "description": "Autonomous Agentic Commerce & Merchant AI Growth Engine for Razorpay Hackathon 2026",
+  "author": "Dharun K",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dharun777-star/RazorPulse.git"
+  }
+}
